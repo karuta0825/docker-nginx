@@ -1,0 +1,16 @@
+version: "2"
+services:
+  api:
+    image: tsweb
+    mem_limit: 268435456
+    environment:
+      TSWEB_PORT: 8000
+  web:
+    image: nginx
+    mem_limit: 268435456
+    environment:
+      BACKEND_HOST: api:8000
+    ports:
+      - "80:80"
+    links:
+      - api
